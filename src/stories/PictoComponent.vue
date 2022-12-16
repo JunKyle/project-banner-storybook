@@ -1,12 +1,11 @@
 <template>
-  <font-awesome-icon 
-    :class="classes"
-    :icon="icon"></font-awesome-icon>
+  <font-awesome-icon :class="classes"
+                     :icon="icon"></font-awesome-icon>
 </template>
 
 <script>
 export default {
-  name: 'Picto',
+  name: 'PictoComponent',
    props: {
     icon: {
       type: String,

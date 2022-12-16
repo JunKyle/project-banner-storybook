@@ -1,16 +1,37 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <BannerWidget :item="bannerObject"
+                  v-if="bannerObject" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import BannerWidget from './components/BannerWidget.vue'
 
 export default {
   name: 'App',
+  data () {
+    return {
+      bannerObject: null
+    };
+  },
   components: {
-    HelloWorld
+    BannerWidget
+  },
+  mounted () {
+      this.getBanner();
+  },
+
+  methods: {
+    getBanner() {
+      this.$axios
+      .get('/static/banner.json')
+      .then(response => {
+        if (response && response.data) {
+          this.bannerObject = response.data;
+        }
+      });
+    }
   }
 }
 </script>

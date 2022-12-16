@@ -1,8 +1,8 @@
-import Picto from './Picto.vue';
+import PictoComponent from './PictoComponent.vue';
 
 export default {
-  title: 'Picto',
-  component: Picto,
+  title: 'PictoComponent',
+  component: PictoComponent,
   // More on argTypes: https://storybook.js.org/docs/vue/api/argtypes
   argTypes: {
     icon: {
@@ -15,8 +15,8 @@ export default {
 // More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
-  components: { Picto },
-  template: '<picto v-bind="$props" />',
+  components: { PictoComponent },
+  template: '<picto-component v-bind="$props" />',
 });
 
 export const Default = Template.bind({});
