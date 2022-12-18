@@ -1,7 +1,6 @@
 <template>
   <button class="button"
           @click="onClick"
-          :class="classes"
           :style="style">{{label}}</button>
 </template>
 
@@ -19,18 +18,14 @@ export default {
     backgroundColor: {
       type: String
     },
-    purple: {
-      type: Boolean,
-      default: false,
+    url: {
+      type: String,
+      default: '',
+      required: true
     }
   },
 
   computed: {
-    classes() {
-      return {
-        'button--purple': this.purple
-      };
-    },
     style() {
       return {
         backgroundColor: this.backgroundColor,
@@ -41,7 +36,7 @@ export default {
 
   methods: {
     onClick() {
-      this.$emit('onClick');
+      window.location.href = this.url;
     },
   }
 }

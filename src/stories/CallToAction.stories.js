@@ -1,4 +1,4 @@
-import CallToAction from './CallToAction.vue';
+import CallToAction from '../components/CallToAction.vue';
 
 export default {
   title: 'CallToAction',
@@ -20,7 +20,7 @@ export default {
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { CallToAction },
-  template: '<call-to-action @onClick="onClick" v-bind="$props" />',
+  template: '<call-to-action v-bind="$props" />',
 });
 
 export const Default = Template.bind({});
@@ -33,10 +33,4 @@ Colored.args = {
   label: 'bouton coloré',
   color: '#FFFFFF',
   backgroundColor: '#e60029'
-};
-
-export const Purple = Template.bind({});
-Purple.args = {
-  label: 'bouton violet',
-  purple: true
 };

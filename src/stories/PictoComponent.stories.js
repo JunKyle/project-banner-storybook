@@ -1,9 +1,8 @@
-import PictoComponent from './PictoComponent.vue';
+import PictoComponent from '../components/PictoComponent.vue';
 
 export default {
   title: 'PictoComponent',
   component: PictoComponent,
-  // More on argTypes: https://storybook.js.org/docs/vue/api/argtypes
   argTypes: {
     icon: {
       control: { type: 'select' },
@@ -12,7 +11,6 @@ export default {
   },
 };
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { PictoComponent },

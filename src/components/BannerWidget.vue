@@ -12,19 +12,21 @@
       <p class="BannerWidget__description"
          v-if="item.description">{{item.description}}</p>
       <div class="BannerWidget__info">
-          <font-awesome-icon class="BannerWidget__infoIcon icon icon--purple"
-                             icon="fa-location-dot"></font-awesome-icon>
+          <PictoComponent class="BannerWidget__infoIcon icon icon--purple"
+                          :icon="'fa-location-dot'" />
           <span class="BannerWidget__infoText">{{item._embedded.address.zip + ' ' + item._embedded.address.city}}</span>
       </div>
       <div class="BannerWidget__info"
            v-if="item.is_webinar">
-          <font-awesome-icon class="BannerWidget__infoIcon icon icon--purple"
-                             icon="fa-video-camera"></font-awesome-icon>
+          <PictoComponent class="BannerWidget__infoIcon icon icon--purple"
+                          :icon="'fa-video-camera'" />
           <span class="BannerWidget__infoText">Disponible en ligne</span>
       </div>
-      <button class="BannerWidget__button button button--purple"
-              v-if="item.web_url"             
-              @click="onClick">En savoir plus</button>
+      <CallToAction class="BannerWidget__button button button--purple"
+                    :label="'En savoir plus'"
+                    :background-color="'#8700c5'"
+                    :url="item.web_url"
+                    v-if="item.web_url"/>
     </div>
     <div class="BannerWidget__cover"
          v-if="item.cover">
@@ -36,6 +38,9 @@
 </template>
 
 <script>
+import CallToAction from './CallToAction.vue';
+import PictoComponent from './PictoComponent.vue';
+
 export default {
   name: 'BannerWidget',
   props: {
@@ -45,17 +50,14 @@ export default {
     }
   },
 
-  methods: {
-    onClick() {
-      window.location.href = this.item.web_url;
-    },
+  components: {
+    CallToAction,
+    PictoComponent
   }
 }
 </script>
 
 <style scoped lang="scss">
-@import "../assets/scss/atoms/_icon.scss";
-@import "../assets/scss/atoms/_button.scss";
 .BannerWidget {
   display: flex;
   flex-direction: column;
